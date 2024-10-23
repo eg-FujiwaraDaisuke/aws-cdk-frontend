@@ -1,7 +1,7 @@
-import * as React from 'react';
-import { AppProps } from 'next/app';
-import { ThemeProvider, createTheme } from '@mui/material/styles';
 import CssBaseline from '@mui/material/CssBaseline';
+import { ThemeProvider, createTheme } from '@mui/material/styles';
+import { AppProps } from 'next/app';
+import * as React from 'react';
 import themeConfig from './themeConfig';
 
 const theme = createTheme({
