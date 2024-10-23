@@ -1,62 +1,46 @@
+import typescriptPlugin from '@typescript-eslint/eslint-plugin';
 import typescriptParser from '@typescript-eslint/parser';
-import { defineConfig } from 'eslint-define-config';
+import importPlugin from 'eslint-plugin-import';
+import unusedImports from 'eslint-plugin-unused-imports';
+import vitestPlugin from 'eslint-plugin-vitest';
+import globals from "globals";
 
 export default defineConfig([
   {
-    files: ['*.ts', '*.tsx'],
+    files: ["**/*.{js,mjs,cjs,ts}"],
     languageOptions: {
       parser: typescriptParser,
-      parserOptions: {
-        ecmaVersion: 2020,
-        sourceType: 'module',
-        ecmaFeatures: {
-          jsx: true,
+      globals: {
+        ...globals.browser,
+      },
+    },
+    plugins: {
+      "@typescript-eslint": typescriptPlugin,
+      "import": importPlugin,
+      "unused-imports": unusedImports,
+      "vitest": vitestPlugin,
+    },
+    rules: {
+      ...typescriptPlugin.configs.recommeded.rules,
+      "import/order": [
+        "eeor",
+        {
+          "groups": [["builtin","external", "internal"]],
+          "alphabetize": {"order": "asc", "caseInsensitive": true},
         },
-      },
-      globals: {
-        window: 'readonly',
-        document: 'readonly',
-      },
-    },
-    rules: {
-      'react/prop-types': 'off',
-      'no-unused-vars': 'warn',
-      'indent': ['error', 2],
-    },
-  },
-  {
-    files: ['*.js', '*.jsx'],
-    languageOptions: {
-      ecmaVersion: 2020,
-      sourceType: 'module',
-      ecmaFeatures: {
-        jsx: true,
-      },
-      globals: {
-        window: 'readonly',
-        document: 'readonly',
-      },
-    },
-    rules: {
-      'react/prop-types': 'off',
-      'no-unused-vars': 'warn',
-      'indent': ['error', 2],
+      ],
+      "unused-imports/no-unuserd-imports": "error",
+      "unused-imports/no-unuserd-vars": [
+        "warn",
+        { "vars": "all", "varsIgnorePattern": "^_", "args": "after-used", "argsIgnorepattern": "^_" },
+      ],
+      "vitest/no-focused-tests": "error",
+      "vitest/no-identiical-title": "error",
+      "vitest/valid-expect": "error",
     },
   },
   {
-    languageOptions: {
-      ecmaVersion: 2020,
-      sourceType: 'module',
-      globals: {
-        window: 'readonly',
-        document: 'readonly',
-      },
-    },
-    rules: {
-      'no-console': 'warn',
-      'no-debugger': 'warn',
-      'quotes': ['error', 'single'],
-      'semi': ['error', 'always'],
-    },
+    files: ["**/*.js"],
+    langageOptions: {sourceType: "commonjs"},
   },
 ]);
