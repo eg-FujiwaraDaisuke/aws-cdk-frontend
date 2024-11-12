@@ -1,28 +1,33 @@
 import TextField from '@mui/material/TextField';
-import { FieldHookConfig, useField } from 'formik';
+import { useFormikContext, FormikValues } from 'formik';
 import React from 'react';
 
-interface InputFieldProps extends FieldHookConfig<string> {
-    label: string;
-    name: string;
-    type?: string;
+interface FormTextFieldProps {
+  label: string;
+  name: string;
+  type?: string;
 }
 
-const InputField = ({ label, name, type = 'text', ...props }: InputFieldProps) => {
-    const [field, meta] = useField(props);
+const FormTextField: React.FC<FormTextFieldProps> = ({ label, name, type = 'text' }) => {
+  const { values, handleChange, handleBlur, touched, errors } = useFormikContext<FormikValues>();
 
-    return (
-        <TextField
-            {...field}
-            {...props}
-            label={label}
-            type={type}
-            variant="outlined"
-            fullWidth
-            error={meta.touched && Boolean(meta.error)}
-            helperText={meta.touched && meta.error}
-        />
-    );
+  // errors[name]が文字列であることをチェック
+  const errorText = touched[name] && typeof errors[name] === 'string' ? errors[name] : undefined;
+
+  return (
+    <TextField
+      label={label}
+      variant="outlined"
+      name={name}
+      fullWidth
+      type={type}
+      value={values[name]}
+      onChange={handleChange}
+      onBlur={handleBlur}
+      error={touched[name] && Boolean(errors[name])}
+      helperText={errorText}
+    />
+  );
 };
 
-export default InputField;
+export default FormTextField;
