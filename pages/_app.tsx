@@ -10,9 +10,11 @@ const theme = createTheme({
     palette: {
       primary: {
         main: themeConfig.primaryColor,
+        contrastText: '#ffffff', // 文字色を白に指定
       },
       secondary: {
         main: themeConfig.secondaryColor,
+        contrastText: '#ffffff',
       },
       background: {
         default: themeConfig.backgroundColor,
@@ -20,6 +22,9 @@ const theme = createTheme({
       text: {
         primary: themeConfig.textColor.primary,
         secondary: themeConfig.textColor.secondary,
+      },
+      error: {
+        main: themeConfig.errorColor,
       },
     },
 });
