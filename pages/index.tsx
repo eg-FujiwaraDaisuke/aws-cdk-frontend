@@ -1,9 +1,9 @@
-import { Container, Stack } from '@mui/material';
+import { Container, FormControl } from '@mui/material';
 import { signIn } from 'aws-amplify/auth';
 import { Formik } from 'formik';
 import React from 'react';
 import * as Yup from 'yup';
-import ButtonConponents from './components/button';
+import ButtonComponents from './components/button';
 import FormTextField from './components/inputField';
 
 const Home = () => {
@@ -35,19 +35,22 @@ const Home = () => {
         >
           {formik => (
             <form onSubmit={formik.handleSubmit}>
-              <Stack spacing={2}>
+              <FormControl>
                 <FormTextField
                   label="Email"
                   name="email"
                   type="email"
                 />
+              </FormControl>
+              <FormControl>
                 <FormTextField
                   label="Password"
                   name="password"
                   type="password"
                 />
-                <ButtonConponents type="submit" label="Login" />
-              </Stack>
+              </FormControl>
+                
+              <ButtonComponents type="submit" label="Login" />
             </form>
           )}
         </Formik>

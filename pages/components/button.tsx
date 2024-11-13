@@ -2,11 +2,11 @@ import Button from '@mui/material/Button';
 import { ButtonProps } from '@mui/material/Button';
 import React from 'react';
 
-interface CustomButtonProps extends ButtonProps {
+interface ButtonComponentsProps extends ButtonProps {
   label: string;
 }
 
-const ButtonConponents: React.FC<CustomButtonProps> = ({ label, ...props }) => {
+const ButtonComponents: React.FC<ButtonComponentsProps> = ({ label, ...props }) => {
   return (
     <Button variant="contained" color="primary" fullWidth {...props}>
       {label}
@@ -14,4 +14,4 @@ const ButtonConponents: React.FC<CustomButtonProps> = ({ label, ...props }) => {
   );
 };
 
-export default ButtonConponents;
+export default ButtonComponents;
