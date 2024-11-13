@@ -26,6 +26,7 @@ const FormTextField: React.FC<FormTextFieldProps> = ({ label, name, type = 'text
       onBlur={handleBlur}
       error={touched[name] && Boolean(errors[name])}
       helperText={errorText}
+      style={{ marginTop: 36 }}
     />
   );
 };
