@@ -7,7 +7,6 @@
     "@emotion/react": "^11.13.3",
     "@emotion/styled": "^11.13.0",
     "@mui/material": "^6.1.6",
-    "@testing-library/react": "^13.4.0",
     "@testing-library/user-event": "^13.5.0",
     "@types/node": "^20.16.14",
     "@types/react": "^18.3.11",
@@ -53,6 +52,8 @@
     ]
   },
   "devDependencies": {
+    "@testing-library/react": "^16.0.1",
+    "@types/testing-library__react": "^10.2.0",
     "@typescript-eslint/eslint-plugin": "^8.11.0",
     "@typescript-eslint/parser": "^8.11.0",
     "eslint": "^8.57.1",
