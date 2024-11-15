@@ -1,30 +1,26 @@
-import { getByTestId, render } from '@testing-library/react'
-import userEvent from '@testing-library/user-event'
-import type { ComponentProps, ReactNode } from 'react';
-import { describe, expect, it, vi }  from 'vitest';
+import { getByTestId } from '@testing-library/react'
+import type { ComponentProps } from 'react';
+import { describe, expect, test, vi }  from 'vitest';
 import { ButtonComponents } from '../../pages/components/button';
+import { setup } from '../util';
 
-const setup = (jsx: ReactNode) => {
-   return {
-      user: userEvent.setup(),
-      render: render(jsx)
-   }
-}
+describe('ButtonComponents', () => {
+   const args: ComponentProps<typeof ButtonComponents> = {
+      // コンポーネントの引数をオブジェクト形式で記載
+      label: 'sample',
+      onClick: vi.fn()
+   };
 
-describe('テスト対象 コンポーネント名とか', () => {
-     const args: ComponentProps<typeof ButtonComponents> = {
-        // コンポーネントの引数をオブジェクト形式で記載
-       label: 'sample',
-       onClick: vi.fn()
-     };
+   const { render, user } = setup(<ButtonComponents data-testid="baseButton" {...args} />)
+   const buttonTarget = getByTestId<HTMLButtonElement>(render.container, 'baseButton')
 
-   it('テスト項目名を入れる', async () => {
-         const { render, user } = setup(<ButtonComponents data-testid="baseButton" {...args} />)
-         // test-dataidを捕まえる
-         
-         const buttonTarget = getByTestId<HTMLButtonElement>(render.container, 'baseButton')
+   test('onClickが発火すること', async () => {
+      await user.click(buttonTarget);
+      expect(args.onClick).toHaveBeenCalled();
+   });
 
-         await user.click(buttonTarget)
-         expect(args.onClick).toHaveBeenCalled();
-     });
+   test('labelが正しく表示されること', async () => {
+      expect(buttonTarget.textContent).toEqual(args.label);
+   });
+
 });
