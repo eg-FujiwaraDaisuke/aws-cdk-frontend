@@ -3,7 +3,7 @@ import { signIn } from 'aws-amplify/auth';
 import { Formik } from 'formik';
 import React from 'react';
 import * as Yup from 'yup';
-import ButtonComponents from './components/button';
+import { ButtonComponents } from './components/button';
 import FormTextField from './components/inputField';
 
 const Home = () => {

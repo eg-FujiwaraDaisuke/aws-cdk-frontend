@@ -4,14 +4,13 @@ import React from 'react';
 
 interface ButtonComponentsProps extends ButtonProps {
   label: string;
+  onClick?: () => void;
 }
 
-const ButtonComponents: React.FC<ButtonComponentsProps> = ({ label, ...props }) => {
+export const ButtonComponents: React.FC<ButtonComponentsProps> = ({ label, ...props }) => {
   return (
     <Button variant="contained" color="primary" fullWidth {...props}>
       {label}
     </Button>
   );
 };
-
-export default ButtonComponents;
