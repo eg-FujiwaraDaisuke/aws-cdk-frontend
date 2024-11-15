@@ -11,13 +11,12 @@ const setup = (jsx: ReactNode) => {
    }
 }
 
-
 describe('テスト対象 コンポーネント名とか', () => {
      const args: ComponentProps<typeof ButtonComponents> = {
         // コンポーネントの引数をオブジェクト形式で記載
        label: 'sample',
        onClick: vi.fn()
-     }
+     };
 
    it('テスト項目名を入れる', async () => {
          const { render, user } = setup(<ButtonComponents data-testid="baseButton" {...args} />)
@@ -27,5 +26,5 @@ describe('テスト対象 コンポーネント名とか', () => {
 
          await user.click(buttonTarget)
          expect(args.onClick).toHaveBeenCalled();
-     })
-})
+     });
+});
