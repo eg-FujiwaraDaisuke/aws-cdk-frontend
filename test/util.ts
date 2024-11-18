@@ -8,4 +8,3 @@ export const setup = (jsx: ReactNode) => {
        render: render(jsx)
     }
 }
- 
