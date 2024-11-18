@@ -4,7 +4,7 @@ import { AppProps } from 'next/app';
 import * as React from 'react';
 import themeConfig from './themeConfig';
 import { configureAmplify } from '../configureAmplify';
-import { Environment } from '../utils/context';
+import { Environment } from '../utils/environment';
 
 const theme = createTheme({
     palette: {

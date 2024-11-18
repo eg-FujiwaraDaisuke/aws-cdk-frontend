@@ -1,7 +1,7 @@
 import { cognitoUserPoolsTokenProvider } from '@aws-amplify/auth/cognito';
 import { Amplify } from 'aws-amplify';
 import { sessionStorage } from 'aws-amplify/utils';
-import { Environment } from './utils/context';
+import { Environment } from './utils/environment';
 
 /**
  * APIのエラー
