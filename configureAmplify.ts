@@ -69,9 +69,9 @@ export const configureAmplify = (environment: Environment): void => {
       envConfig = {
         Auth: {
           Cognito: {
-            userPoolId: 'dev-userPoolId',
-            userPoolClientId: '123',
-            identityPoolId: 'dev-identityPoolId',
+            userPoolId: 'ap-northeast-1_Z0F1NdHfU',
+            userPoolClientId: '6272o92pirbogh213ohf7lo8o0',
+            identityPoolId: 'ap-northeast-1:3a135d8e-faec-45a5-aa02-438a9beb895d',
           },
         },
       };
