@@ -18,11 +18,11 @@ vi.mock('@aws-amplify/auth/cognito', () => ({
 }));
 
 describe.each`
-    env      | expectedUserPoolId  | expectedIdentityPoolId
-    ${'prd'} | ${'prd-userPoolId'} | ${'prd-identityPoolId'}
-    ${'stg'} | ${'stg-userPoolId'} | ${'stg-identityPoolId'}
-    ${'dev'} | ${'dev-userPoolId'} | ${'dev-identityPoolId'}
-`('configureAmplify', ({ env, expectedUserPoolId, expectedIdentityPoolId }) => {
+    env      | expectedUserPoolClientId | expectedUserPoolId  | expectedIdentityPoolId
+    ${'prd'} | ${'123'}                 | ${'prd-userPoolId'} | ${'prd-identityPoolId'}
+    ${'stg'} | ${'123'}                 | ${'stg-userPoolId'} | ${'stg-identityPoolId'}
+    ${'dev'} | ${'6272o92pirbogh213ohf7lo8o0'} | ${'ap-northeast-1_Z0F1NdHfU'} | ${'ap-northeast-1:3a135d8e-faec-45a5-aa02-438a9beb895d'}
+`('configureAmplify', ({ env, expectedUserPoolClientId, expectedUserPoolId, expectedIdentityPoolId }) => {
   
     beforeEach(() => {
         configureAmplify(env);
@@ -37,7 +37,7 @@ describe.each`
         Auth: expect.objectContaining({
           Cognito: expect.objectContaining({
             userPoolId: expectedUserPoolId,
-            userPoolClientId: '123',
+            userPoolClientId: expectedUserPoolClientId,
             identityPoolId: expectedIdentityPoolId,
           }),
         }),
