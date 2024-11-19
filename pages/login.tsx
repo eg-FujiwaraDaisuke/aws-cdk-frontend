@@ -1,9 +1,8 @@
-import { Container, FormControl, TextField } from '@mui/material';
+import { Button, Container, FormControl, TextField } from '@mui/material';
 import { signIn } from 'aws-amplify/auth';
 import { Formik } from 'formik';
 import React from 'react';
 import * as Yup from 'yup';
-import { ButtonComponents } from './components/button';
 
 const LoginPage: React.FC = () => {
   return (
@@ -45,6 +44,7 @@ const LoginPage: React.FC = () => {
                 onBlur = { handleBlur }
                 error = { touched.email && Boolean(errors.email) }
                 helperText = { touched.email ? errors.email : undefined }
+                sx={{ margin: '8px 0 0 0' }}
               />
               <TextField
                 label = "Password"
@@ -56,9 +56,12 @@ const LoginPage: React.FC = () => {
                 onBlur = { handleBlur }
                 error = { touched.password && Boolean(errors.password) }
                 helperText = { touched.password ? errors.password : undefined }
+                sx={{ margin: '8px 0 0 0' }}
               />
             </FormControl>
-            <ButtonComponents type="submit" label="Login" />
+            <Button variant="contained" color="primary" type="submit" fullWidth>
+              Login
+            </Button>
           </form>
         )}
       </Formik>
