@@ -5,7 +5,7 @@ import React from 'react';
 import * as Yup from 'yup';
 import { ButtonComponents } from './components/button';
 
-export const LoginPage = () => {
+const LoginPage: React.FC = () => {
   return (
     <Container maxWidth="md">
       <h2>Login</h2>
@@ -65,3 +65,5 @@ export const LoginPage = () => {
     </Container>
   );
 };
+
+export default LoginPage;
