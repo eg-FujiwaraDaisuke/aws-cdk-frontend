@@ -1,11 +1,12 @@
 const themeConfig = {
-    primaryColor: '#1976d2',
-    secondaryColor: '#dc004e',
-    backgroundColor: '#f5f5A4',
+    primaryColor: '#27ab6d',
+    secondaryColor: '#27a7ab',
+    backgroundColor: '#666',
     textColor: {
-      primary: '#000000',
+      primary: '#ffffff',
       secondary: '#ffffff',
     },
+    errorColor: '#ab2765'
 };
 
 export default themeConfig;

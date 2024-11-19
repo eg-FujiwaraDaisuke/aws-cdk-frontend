@@ -1,15 +1,15 @@
-import Button from '@mui/material/Button';
-import React from 'react';
+import { useRouter } from 'next/router';
+import { useEffect } from 'react';
 
-const Home = () => {
-  return (
-    <div>
-      <h1>Welcome to My Next.js App!</h1>
-      <Button variant="contained" color="primary">
-        Click Me
-      </Button>
-    </div>
-  );
+const IndexPage = () => {
+  const router = useRouter();
+
+  useEffect(() => {
+    // コンポーネントがマウントされたときにリダイレクト
+    router.push('/login');
+  }, [router]);
+
+  return null; // 何も表示しない
 };
 
-export default Home;
+export default IndexPage;
