@@ -8,7 +8,7 @@ interface FormTextFieldProps {
   type?: string;
 }
 
-const FormTextField: React.FC<FormTextFieldProps> = ({ label, name, type = 'text' }) => {
+export const FormTextField: React.FC<FormTextFieldProps> = ({ label, name, type = 'text' }) => {
   const { values, handleChange, handleBlur, touched, errors } = useFormikContext<FormikValues>();
 
   // errors[name]が文字列であることをチェック
@@ -30,5 +30,3 @@ const FormTextField: React.FC<FormTextFieldProps> = ({ label, name, type = 'text
     />
   );
 };
-
-export default FormTextField;
